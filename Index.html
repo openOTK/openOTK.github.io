@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            font-family: meiryo, 'メイリオ', meiryo ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            width: 100%;
+        }
+        div, p, span {
+            font-size: 16px;
+        }
+
+        .gnav {
+            display: flex;
+            padding: 0;
+            list-style: none;
+        }
+
+        .gnav>li {
+            border-right: 1pt solid #fff;
+            width: 33%;
+            text-align: center;
+        }
+
+        .gnav>li:hover {
+            background: rgba(0, 255, 255, 0.5);
+        }
+
+        .gnav>li:last-child {
+            border-right: none;
+        }
+
+        .pos1-1 {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pos1-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .copy {
+            font-size: 0.8em;
+        }
+
+        .content-size {
+            margin: 0 auto;
+            width: 750px;
+        }
+
+        .disp-close {
+            display: none;
+        }
+
+        .content-buttom {
+            margin-bottom: 10pt;
+        }
+
+        #header, #footer {
+            background: #000;
+            color: #fff;
+        }
+
+        #main {
+            background: #fff;
+            color: #000;
+        }
+
+        #backView {
+            background: #888888;
+        }
+    </style>
+    <script type="text/javascript">
+        var FunctionDoc = function(args) {
+            if(args === "contentChange") {
+                return function(args) {
+                    var mContents = document.querySelectorAll(".main-content");
+                    for(var i = 0;i < mContents.length;i++){
+                        if(mContents[i].dataset.content === args) {
+                            if(mContents[i].classList.contains("disp-close")) {
+                                mContents[i].classList.remove("disp-close");
+                            }
+                        } else {
+                            if(!mContents[i].classList.contains("disp-close")) {
+                                mContents[i].classList.add("disp-close");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container" class="pos1-1">
+        <div id="header">
+            <div class="content-size">
+                <h1>openOTK</h1>
+                <p>役に立ちそうで役に立たないけど<br>役に立ちそうな気がするソースコード置き場</p>
+            </div>
+            <ul class="gnav content-size">
+                <li data-content="javascript">javascript</li>
+                <li data-content="python">python</li>
+                <li data-content="excel">excel</li>
+            </ul>
+        </div>
+        <div id="main">
+            <div class="content-size">
+                <div class="main-content" data-content="javascript"></div>
+                <div class="main-content disp-close" data-content="python"></div>
+                <div class="main-content disp-close" data-content="excel"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="content-size">
+                <p class="copy">Copyright &copy; 2019 openOTK All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var wSize = 750;
+        var valueset = {
+            "javascript":[
+                {
+                    "data":"2019/12/10",
+                    "info":"題名はないよ",
+                    "tips":"非同期処理にしっくはっく中"
+                },
+                {
+                    "data":"2019/12/XX",
+                    "info":"工事中",
+                    "tips":"コピーテキスト"
+                }
+            ],
+            "python":[
+                {
+                    "data":"2019/12/10",
+                    "info":"題名はないよ",
+                    "tips":"最近手を出し始めた"
+                },
+                {
+                    "data":"2019/12/XX",
+                    "info":"工事中",
+                    "tips":"コピーテキスト"
+                }
+            ],
+            "excel":[
+                {
+                    "data":"2019/12/10",
+                    "info":"題名はないよ",
+                    "tips":"まぁ、うん"
+                },
+                {
+                    "data":"2019/12/XX",
+                    "info":"工事中",
+                    "tips":"コピーテキスト"
+                }
+            ]
+        };
+        /**
+        * ロードイベント
+        */
+        (function(){
+            readText();
+            gnavEvent();
+        })();
+
+        function readText() {
+            var melm = document.querySelector("#main").children[0];
+            // valuesetに外部jsonを読ませる
+
+            for(var i = 0;i < melm.children.length;i++){
+                // コンテントエリアを空にする
+                melm.children[i].innerHTML = "";
+                for(var j in valueset){
+                    if(melm.children[i].dataset.content === j){
+                        for(var k = 0, len = valueset[j].length;k < len;k++){
+                            var divelm = document.createElement("div");
+                            var dataelm = document.createElement("p");
+                            var h3elm = document.createElement("h4");
+                            var pelm = document.createElement("p");
+                            dataelm.textContent = valueset[j][k]["data"];
+                            h3elm.textContent = valueset[j][k]["info"];
+                            pelm.textContent = valueset[j][k]["tips"];
+                            divelm.appendChild(dataelm);
+                            divelm.appendChild(h3elm);
+                            divelm.appendChild(pelm);
+                            divelm.setAttribute("class", "content-buttom");
+                            // テキストブロックを各コンテンツ要素に設定していく
+                            melm.children[i].appendChild(divelm);
+                        }
+                    }
+                }
+            }
+        };
+        /**
+        * gnavにイベントセット
+        */
+        function gnavEvent() {
+            var gnavelm = document.querySelector(".gnav");
+            for(var i = 0;i < gnavelm.children.length;i++) {
+                var setfunc = FunctionDoc("contentChange");
+                gnavelm.children[i].onclick = function(args) {
+                    readText();
+                    setfunc(args.target.dataset.content);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
