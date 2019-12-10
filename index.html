@@ -79,6 +79,7 @@
             background: #888888;
         }
     </style>
+    <script src="./xhr.js" type="text/javascript"></script>
     <script type="text/javascript">
         var FunctionDoc = function(args) {
             if(args === "contentChange") {
@@ -128,6 +129,7 @@
     </div>
     <script type="text/javascript">
         var wSize = 750;
+        var myXhr = XHR();
         var valueset = {
             "javascript":[
                 {
@@ -172,6 +174,14 @@
         (function(){
             readText();
             gnavEvent();
+alert(myXhr({
+"method":"POST",
+"url":"./testText.json",
+"type":true,
+"":function(){
+return this;
+}
+}));
         })();
 
         function readText() {
