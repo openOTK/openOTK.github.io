@@ -202,11 +202,6 @@
         */
         (function(){
             xhr = FunctionDoc("xhr");
-            readJsonText();
-            gnavEvent();
-        })();
-
-        function readJsonText() {
             xhr({
                 "method":"POST",
                 "url":"./testText.json",
@@ -217,7 +212,8 @@
                     readText();
                 }
             });
-        };
+            gnavEvent();
+        })();
 
         function readText() {
             var melm = document.querySelector("#main").children[0];
@@ -251,11 +247,20 @@
         * gnavにイベントセット
         */
         function gnavEvent() {
+            xhr({
+                "method":"POST",
+                "url":"./testText.json",
+                "async":true,
+                "type":"",
+                "collback":function(args) {
+                    valueset = JSON.parse(args);
+                    readText();
+                }
+            });
             var gnavelm = document.querySelector(".gnav");
             for(var i = 0;i < gnavelm.children.length;i++) {
                 var setfunc = FunctionDoc("contentChange");
                 gnavelm.children[i].onclick = function(args) {
-                    readJsonText();
                     setfunc(args.target.dataset.content);
                 }
             }
