@@ -118,8 +118,10 @@
                             case 4: // データ受信完了.
                                 if( httpObj.status == 200 || httpObj.status == 304 ) {
                                     args["collback"](httpObj.responseText);
+                                    httpObj.abort();
                                 } else {
                                     alert('Failed. HttpStatus:' + httpObj.statusText);
+                                    httpObj.abort();
                                 }
                                 break;
                         }
@@ -202,16 +204,6 @@
         */
         (function(){
             xhr = FunctionDoc("xhr");
-            xhr({
-                "method":"POST",
-                "url":"./testText.json",
-                "async":true,
-                "type":"",
-                "collback":function(args) {
-                    valueset = JSON.parse(args);
-                    readText();
-                }
-            });
             gnavEvent();
         })();
 
