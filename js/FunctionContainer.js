@@ -3,9 +3,10 @@ var FunctionContainer = function() {
         // ロードイベント
         if(args === "init") {
             return function() {
-                var gnav_elm = _d.querySelector(".gnav");
-                var click_event = _f.get("contentChange");
-                for(var i = 0;i < gnav_elm.children.length;i++) {
+                var gnav_elm, click_event;
+                gnav_elm = _d.querySelector(".gnav");
+                for(var i = 0, len_i = gnav_elm.children.length;i < len_i;i++) {
+                    click_event = _f.get("contentChange");
                     gnav_elm.children[i].onclick = function(args) {
                         _f.get("readFile")("./testText.json");
                         click_event(args.target.dataset.content);
@@ -15,8 +16,9 @@ var FunctionContainer = function() {
         // gnav押下イベント
         } else if(args === "contentChange") {
             return function(args) {
-                var main_contents = document.querySelectorAll(".main-content");
-                for(var i = 0;i < main_contents.length;i++){
+                var main_contents;
+                main_contents = document.querySelectorAll(".main-content");
+                for(var i = 0, len_i = main_contents.length;i < len_i;i++){
                     if(main_contents[i].dataset.content === args) {
                         if(main_contents[i].classList.contains("disp-close")) {
                             main_contents[i].classList.remove("disp-close");
@@ -30,14 +32,14 @@ var FunctionContainer = function() {
             }
         // コンテントエリア生成
         } else if(args === "readText") {
-            return function readText(args) {
+            return function(args) {
                 var main_elm = _d.querySelector("#main").children[0];
-                for(var i = 0;i < main_elm.children.length;i++){
+                for(var i = 0, len_i = main_elm.children.length;i < len_i;i++){
                     // コンテントエリアを空にする
                     main_elm.children[i].innerHTML = "";
                     for(var j in args){
                         if(main_elm.children[i].dataset.content === j){
-                            for(var k = 0, len = args[j].length;k < len;k++){
+                            for(var k = 0, len_k = args[j].length;k < len_k;k++){
                                 var text_block_elm, text_data_elm, text_info_elm, text_tips_elm;
                                 // テキストブロック用要素生成
                                 text_block_elm = _d.createElement("div");
@@ -105,8 +107,8 @@ var FunctionContainer = function() {
                     "type":"",
                     "collback":function(args) {
                         var rt = _f.get("readText");
-                        var valueset = JSON.parse(args);
-                        rt(valueset);
+                        var json = JSON.parse(args);
+                        rt(json);
                     }
                 });
             }
