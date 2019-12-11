@@ -3,7 +3,7 @@
         {
             "data":"0.0.1:",
             "info":"パネルDe:コード",
-            "tips":"<div class=\"deCode-chart\"><input type=\"button\" value=\"new\" onclick=\"_f.get('deCodeInit')()\"></div>"
+            "tips":"<div class=\"deCode\"><input type=\"button\" value=\"new\" onclick=\"_f.get('deCodeInit')()\"></div>"
         },
         {
             "data":"1.",
