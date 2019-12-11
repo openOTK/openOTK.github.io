@@ -5,13 +5,17 @@ default.css
 * {
     margin: 0;
     font-family: meiryo, 'メイリオ', meiryo ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24pt;
 }
 
 body {
     width: 100%;
 }
-div, p, span {
-    font-size: 16px;
+h1 {
+    font-size: 32pt;
+}
+h2, h3, h4 {
+    font-size: 26pt;
 }
 
 .gnav {
