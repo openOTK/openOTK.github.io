@@ -9,7 +9,7 @@ default.css
 }
 
 body {
-    width: 100%;
+    width: auto;
 }
 h1 {
     font-size: 32pt;
@@ -20,35 +20,19 @@ h2, h3, h4 {
 
 .gnav {
     display: flex;
+    justify-content: space-around;
     padding: 0;
     list-style: none;
 }
 
 .gnav>li {
-    border-right: 1pt solid #fff;
-    width: 33%;
+    background: rgba(25, 25, 25, 1);
+    border-radius: 25%;
     text-align: center;
 }
 
 .gnav>li:hover {
     background: rgba(0, 255, 255, 0.5);
-}
-
-.gnav>li:last-child {
-    border-right: none;
-}
-
-.pos1-1 {
-    position: relative;
-    z-index: 2;
-}
-
-.pos1-2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
 }
 
 .copy {
@@ -57,7 +41,7 @@ h2, h3, h4 {
 
 .content-size {
     margin: 0 auto;
-    width: 750px;
+    max-width: 750px;
 }
 
 .disp-close {
