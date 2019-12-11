@@ -128,9 +128,10 @@ var FunctionContainer = function() {
                     }
                     table_chart_elm.appendChild(tr_chart_elm);
                 }
+                deCode_chart_elm.appendChild(table_chart_elm);
                 // パネル生成
                 var deCode_panel_elm = _d.querySelector(".deCode-panel");
-                var image_panel_elm = new Image;
+                var image_panel_elm = _d.createElement("img");
                 deCode_panel_elm.appendChild(image_panel_elm);
                 // コンテキスト生成
                 var deCode_context_elm = _d.querySelector(".deCode-context");
