@@ -3,10 +3,10 @@ var FunctionContainer = function() {
         // ロードイベント
         if(args === "init") {
             return function() {
-                var gnavelm = _d.querySelector(".gnav");
+                var gnav_elm = _d.querySelector(".gnav");
                 var click_event = _f.get("contentChange");
-                for(var i = 0;i < gnavelm.children.length;i++) {
-                    gnavelm.children[i].onclick = function(args) {
+                for(var i = 0;i < gnav_elm.children.length;i++) {
+                    gnav_elm.children[i].onclick = function(args) {
                         _f.get("readFile")("./testText.json");
                         click_event(args.target.dataset.content);
                     }
@@ -15,15 +15,15 @@ var FunctionContainer = function() {
         // gnav押下イベント
         } else if(args === "contentChange") {
             return function(args) {
-                var mContents = document.querySelectorAll(".main-content");
-                for(var i = 0;i < mContents.length;i++){
-                    if(mContents[i].dataset.content === args) {
-                        if(mContents[i].classList.contains("disp-close")) {
-                            mContents[i].classList.remove("disp-close");
+                var main_contents = document.querySelectorAll(".main-content");
+                for(var i = 0;i < main_contents.length;i++){
+                    if(main_contents[i].dataset.content === args) {
+                        if(main_contents[i].classList.contains("disp-close")) {
+                            main_contents[i].classList.remove("disp-close");
                         }
                     } else {
-                        if(!mContents[i].classList.contains("disp-close")) {
-                            mContents[i].classList.add("disp-close");
+                        if(!main_contents[i].classList.contains("disp-close")) {
+                            main_contents[i].classList.add("disp-close");
                         }
                     }
                 }
@@ -32,7 +32,7 @@ var FunctionContainer = function() {
         } else if(args === "readText") {
             return function readText(args) {
                 var main_elm = _d.querySelector("#main").children[0];
-                for(var i = 0;i < _m.children.length;i++){
+                for(var i = 0;i < main_elm.children.length;i++){
                     // コンテントエリアを空にする
                     main_elm.children[i].innerHTML = "";
                     for(var j in args){
