@@ -1,0 +1,79 @@
+@charset "utf-8";
+/*------------------------------------------------
+default.css
+------------------------------------------------*/
+* {
+    margin: 0;
+    font-family: meiryo, 'メイリオ', meiryo ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 100%;
+}
+div, p, span {
+    font-size: 16px;
+}
+
+.gnav {
+    display: flex;
+    padding: 0;
+    list-style: none;
+}
+
+.gnav>li {
+    border-right: 1pt solid #fff;
+    width: 33%;
+    text-align: center;
+}
+
+.gnav>li:hover {
+    background: rgba(0, 255, 255, 0.5);
+}
+
+.gnav>li:last-child {
+    border-right: none;
+}
+
+.pos1-1 {
+    position: relative;
+    z-index: 2;
+}
+
+.pos1-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.copy {
+    font-size: 0.8em;
+}
+
+.content-size {
+    margin: 0 auto;
+    width: 750px;
+}
+
+.disp-close {
+    display: none;
+}
+
+.content-buttom {
+    margin-bottom: 10pt;
+}
+
+#header, #footer {
+    background: #000;
+    color: #fff;
+}
+
+#main {
+    background: #fff;
+    color: #000;
+}
+
+#backView {
+    background: #888888;
+}
