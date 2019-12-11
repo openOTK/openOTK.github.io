@@ -46,11 +46,11 @@ var FunctionContainer = function() {
                                 text_data_info_elm = _d.createElement("p");
                                 text_data_elm = _d.createElement("span");
                                 text_info_elm = _d.createElement("span");
-                                text_tips_elm = _d.createElement("p");
+                                text_tips_elm = _d.createElement("div");
                                 // jsonからテキストを設定
-                                text_data_elm.textContent = "[" + args[j][k]["data"] + "]:";
-                                text_info_elm.textContent = args[j][k]["info"];
-                                text_tips_elm.textContent = args[j][k]["tips"];
+                                text_data_elm.innerHTML = args[j][k]["data"];
+                                text_info_elm.innerHTML = args[j][k]["info"];
+                                text_tips_elm.innerHTML = args[j][k]["tips"];
                                 text_tips_elm.setAttribute("class", "indent-em1");
                                 // テキストブロックに要素追加
                                 text_data_info_elm.appendChild(text_data_elm);
@@ -114,6 +114,29 @@ var FunctionContainer = function() {
                         rt(json);
                     }
                 });
+            }
+        } else if(args === "deCodeInit") {
+            return function(args) {
+                // グラフ生成
+                var deCode_chart_elm = _d.querySelector(".deCode-chart");
+                var table_chart_elm = _d.createElement("table");
+                for(var i = 0, len_i = 8;i < len_i;i++) {
+                    var tr_chart_elm = _d.createElement("tr");
+                    for(var j = 0, len_j = 8;j < len_j;j++) {
+                        var td_chart_elm = _d.createElement("td");
+                        tr_chart_elm.appendChild(td_chart_elm);
+                    }
+                    table_chart_elm.appendChild(tr_chart_elm);
+                }
+                // パネル生成
+                var deCode_panel_elm = _d.querySelector(".deCode-panel");
+                var image_panel_elm = new Image;
+                deCode_panel_elm.appendChild(image_panel_elm);
+                // コンテキスト生成
+                var deCode_context_elm = _d.querySelector(".deCode-context");
+                var input_context_elm = _d.createElement("input");
+                input_context_elm.setAttribute("type", "text");
+                deCode_context_elm.appendChild(input_context_elm);
             }
         }
     }

@@ -1,0 +1,24 @@
+{
+    "deCode":[
+        {
+            "data":"0.0.1:",
+            "info":"パネルDe:コード",
+            "tips":"<div class=\"deCode-chart\"><input type=\"button\" value=\"new\" onclick=\"_f.get('deCodeInit')()\"></div>"
+        },
+        {
+            "data":"1.",
+            "info":"グラフ",
+            "tips":"<div class=\"deCode-chart\"></div>"
+        },
+        {
+            "data":"2.",
+            "info":"パネル",
+            "tips":"<div class=\"deCode-panel\"></div>"
+        },
+        {
+            "data":"3.",
+            "info":"コンテキスト",
+            "tips":"<div class=\"deCode-context\"></div>"
+        }
+    ]
+}
