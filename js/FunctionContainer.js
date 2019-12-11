@@ -38,7 +38,7 @@ var FunctionContainer = function() {
                     for(var j in args){
                         if(main_elm.children[i].dataset.content === j){
                             for(var k = 0, len = args[j].length;k < len;k++){
-                                var text_block_Elm, text_data_elm, text_info_elm, text_tips_elm;
+                                var text_block_elm, text_data_elm, text_info_elm, text_tips_elm;
                                 // テキストブロック用要素生成
                                 text_block_elm = _d.createElement("div");
                                 text_data_elm = _d.createElement("p");
@@ -49,12 +49,12 @@ var FunctionContainer = function() {
                                 text_info_elm.textContent = args[j][k]["info"];
                                 text_tips_elm.textContent = args[j][k]["tips"];
                                 // テキストブロックに要素追加
-                                text_block_Elm.appendChild(text_data_elm);
-                                text_block_Elm.appendChild(text_info_elm);
-                                text_block_Elm.appendChild(text_tips_elm);
-                                text_block_Elm.setAttribute("class", "content-buttom");
+                                text_block_elm.appendChild(text_data_elm);
+                                text_block_elm.appendChild(text_info_elm);
+                                text_block_elm.appendChild(text_tips_elm);
+                                text_block_elm.setAttribute("class", "content-buttom");
                                 // テキストブロックを各コンテンツ要素に設定していく
-                                main_elm.children[i].appendChild(text_block_Elm);
+                                main_elm.children[i].appendChild(text_block_elm);
                             }
                         }
                     }
