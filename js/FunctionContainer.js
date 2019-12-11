@@ -8,7 +8,7 @@ var FunctionContainer = function() {
                 for(var i = 0, len_i = gnav_elm.children.length;i < len_i;i++) {
                     click_event = _f.get("contentChange");
                     gnav_elm.children[i].onclick = function(args) {
-                        _f.get("readFile")("./testText.json");
+                        _f.get("readFile")("openOTK.github.io/json/" + args.target.dataset.content + ".json");
                         click_event(args.target.dataset.content);
                     }
                 }
