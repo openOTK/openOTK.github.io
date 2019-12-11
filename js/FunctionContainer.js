@@ -43,16 +43,19 @@ var FunctionContainer = function() {
                                 var text_block_elm, text_data_elm, text_info_elm, text_tips_elm;
                                 // テキストブロック用要素生成
                                 text_block_elm = _d.createElement("div");
-                                text_data_elm = _d.createElement("p");
-                                text_info_elm = _d.createElement("h4");
+                                text_data_info_elm = _d.createElement("p");
+                                text_data_elm = _d.createElement("span");
+                                text_info_elm = _d.createElement("span");
                                 text_tips_elm = _d.createElement("p");
                                 // jsonからテキストを設定
-                                text_data_elm.textContent = args[j][k]["data"];
+                                text_data_elm.textContent = "[" + args[j][k]["data"] + "]:";
                                 text_info_elm.textContent = args[j][k]["info"];
                                 text_tips_elm.textContent = args[j][k]["tips"];
+                                text_tips_elm.setAttribute("class", "indent-em1");
                                 // テキストブロックに要素追加
-                                text_block_elm.appendChild(text_data_elm);
-                                text_block_elm.appendChild(text_info_elm);
+                                text_data_info_elm.appendChild(text_data_elm);
+                                text_data_info_elm.appendChild(text_info_elm);
+                                text_block_elm.appendChild(text_data_info_elm);
                                 text_block_elm.appendChild(text_tips_elm);
                                 text_block_elm.setAttribute("class", "content-buttom");
                                 // テキストブロックを各コンテンツ要素に設定していく

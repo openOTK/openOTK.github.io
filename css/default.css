@@ -5,17 +5,17 @@ default.css
 * {
     margin: 0;
     font-family: meiryo, 'メイリオ', meiryo ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 24pt;
+    font-size: 15pt;
 }
 
 body {
     width: auto;
 }
 h1 {
-    font-size: 32pt;
+    font-size: 24pt;
 }
 h2, h3, h4 {
-    font-size: 26pt;
+    font-size: 20pt;
 }
 
 .gnav {
@@ -44,6 +44,10 @@ h2, h3, h4 {
     max-width: 750px;
 }
 
+.indent-em1 {
+    padding-left: 1em;
+}
+
 .disp-close {
     display: none;
 }
@@ -58,6 +62,7 @@ h2, h3, h4 {
 }
 
 #main {
+    min-height: 150pt;
     background: #fff;
     color: #000;
 }
