@@ -1,4 +1,4 @@
-export function ConstPool() {
+function ConstPool() {
     this.d = document;
     this.f = new FunctionContainer;
     this.w = new Xworker;

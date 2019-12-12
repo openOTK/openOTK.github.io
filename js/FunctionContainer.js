@@ -1,4 +1,4 @@
-export function FunctionContainer() {
+function FunctionContainer() {
     this.get = function(args) {
         // ロードイベント
         if(args === "init") {
