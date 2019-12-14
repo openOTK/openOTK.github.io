@@ -94,7 +94,7 @@ function PanelDeCode() {
                 var context_setting = cp.PDC.is(args);
                 for(var i = 0, len_i = context_setting.length;i < len_i;i++) {
                     var context_p_elm = cp.D.createElement("p");
-                    context_p_elm.appendChild(cp.D.crateTextNode(cp.PDC.is("panel_names")[i].node));
+                    context_p_elm.appendChild(cp.D.createTextNode(cp.PDC.is("panel_names")[i].node));
                     if(cp.PDC.is("panel_names")[i].type === "textarea") {
                         var context_input_elm = cp.D.createElement("textarea");
                     } else {
