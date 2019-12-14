@@ -66,30 +66,30 @@ function PanelDeCode() {
         // グラフ生成
         } else if("chart") {
             return function() {
-                var table_chart_elm = cp.D.createElement("table");
+                var chart_table_elm = cp.D.createElement("table");
                 for(var i = 0, len_i = cp.PDC.is("chart_height");i < len_i;i++) {
-                    var tr_chart_elm = cp.D.createElement("tr");
+                    var chart_tr_elm = cp.D.createElement("tr");
                     for(var j = 0, len_j = cp.PDC.is("chart_width");j < len_j;j++) {
-                        var td_chart_elm = cp.D.createElement("td");
-                        td_chart_elm.setAttribute("class", "chart-one");
-                        td_chart_elm.setAttribute("onclick", "cp.PDC.get('open')('panel')");
-                        td_chart_elmd.dataset.posy = i;
-                        td_chart_elmd.dataset.posx = j;
-                        tr_chart_elm.appendChild(td_chart_elm);
+                        var chart_td_elm = cp.D.createElement("td");
+                        chart_td_elm.setAttribute("class", "chart-one");
+                        chart_td_elm.setAttribute("onclick", "cp.PDC.get('open')('panel')");
+                        chart_td_elm.dataset.posy = i;
+                        chart_td_elm.dataset.posx = j;
+                        chart_tr_elm.appendChild(chart_td_elm);
                     }
-                    table_chart_elm.appendChild(tr_chart_elm);
+                    chart_table_elm.appendChild(chart_tr_elm);
                 }
-                cp.PDC.is("chart").appendChild(table_chart_elm);
+                cp.PDC.is("chart").appendChild(chart_table_elm);
             }
         // パネル生成
         } else if("panel") {
             return function() {
                 for(var i = 0, len_i = cp.PDC.is("panel_names").length;i < len_i;i++) {
-                    var image_panel_elm = cp.D.createElement("input");
-                    image_panel_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
-                    image_panel_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
-                    image_panel_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].onclock + ")");
-                    cp.PDC.is("panel").appendChild(image_panel_elm);
+                    var panel_image_elm = cp.D.createElement("input");
+                    panel_image_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
+                    panel_image_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
+                    panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].onclock + ")");
+                    cp.PDC.is("panel").appendChild(panel_image_elm);
                 }
                 cp.PDC.is("panel").appendChild(cp.PDC.get("createCloseButton")("panel"));
             }
@@ -98,17 +98,17 @@ function PanelDeCode() {
             return function(args) {
                 var context_setting = cp.PDC.is(args);
                 for(var i = 0, len_i = context_setting.length;i < len_i;i++) {
-                    var comment_context_elm = cp.D.createElement("p");
-                    comment_context_elm.appendChild(cp.D.crateTextNode(cp.PDC.is("panel_names")[i].node));
+                    var context_p_elm = cp.D.createElement("p");
+                    context_p_elm.appendChild(cp.D.crateTextNode(cp.PDC.is("panel_names")[i].node));
                     if(cp.PDC.is("panel_names")[i].type === "textarea") {
-                        var input_context_elm = cp.D.createElement("textarea");
+                        var context_input_elm = cp.D.createElement("textarea");
                     } else {
-                        var input_context_elm = cp.D.createElement("input");
-                        input_context_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
-                        input_context_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
+                        var context_input_elm = cp.D.createElement("input");
+                        context_input_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
+                        context_input_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
                     }
-                    comment_context_elm.appendChild(input_context_elm);
-                    cp.PDC.is("context").appendChild(comment_context_elm);
+                    context_p_elm.appendChild(context_input_elm);
+                    cp.PDC.is("context").appendChild(context_p_elm);
                 }
                 cp.PDC.is("context").appendChild(cp.PDC.get("createCloseButton")("context"));
                 cp.PDC.get("close")("panel");
@@ -131,12 +131,12 @@ function PanelDeCode() {
         // 閉じるボタン生成
         } else if("createCloseButton") {
             return function(args) {
-                var close_panel_elm = cp.D.createElement("p");
-                var close_panel_input = cp.D.createElement("input");
-                close_panel_input.setAttribute("type", "button");
-                close_panel_input.setAttribute("value", "閉じる");
-                close_panel_input.setAttribute("onclock", "cp.PDC.get('close')(" + args + ")");
-                return close_panel_elm.appendChild(close_panel_input);
+                var close_p_elm = cp.D.createElement("p");
+                var close_input_elm = cp.D.createElement("input");
+                close_input_elm.setAttribute("type", "button");
+                close_input_elm.setAttribute("value", "閉じる");
+                close_input_elm.setAttribute("onclock", "cp.PDC.get('close')(" + args + ")");
+                return close_p_elm.appendChild(close_input_elm);
             }
         }
     }
