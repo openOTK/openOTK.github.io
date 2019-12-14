@@ -4,11 +4,11 @@ function FunctionContainer() {
         if(args === "init") {
             return function() {
                 var gnav_elm, click_event;
-                gnav_elm = cp.d.querySelector(".gnav");
+                gnav_elm = cp.D.querySelector(".gnav");
                 for(var i = 0, len_i = gnav_elm.children.length;i < len_i;i++) {
-                    click_event = cp.f.get("contentChange");
+                    click_event = cp.FC.get("contentChange");
                     gnav_elm.children[i].onclick = function(args) {
-                        cp.f.get("readFile")("openOTK.github.io/json/" + args.target.dataset.content + ".json");
+                        cp.FC.get("readFile")("openOTK.github.io/json/" + args.target.dataset.content + ".json");
                         click_event(args.target.dataset.content);
                     }
                 }
@@ -33,7 +33,7 @@ function FunctionContainer() {
         // コンテントエリア生成
         } else if(args === "readText") {
             return function(args) {
-                var main_elm = cp.d.querySelector("#main").children[0];
+                var main_elm = cp.D.querySelector("#main").children[0];
                 for(var i = 0, len_i = main_elm.children.length;i < len_i;i++){
                     // コンテントエリアを空にする
                     main_elm.children[i].innerHTML = "";
@@ -42,11 +42,11 @@ function FunctionContainer() {
                             for(var k = 0, len_k = args[j].length;k < len_k;k++){
                                 var text_block_elm, text_data_elm, text_info_elm, text_tips_elm;
                                 // テキストブロック用要素生成
-                                text_block_elm = cp.d.createElement("div");
-                                text_data_info_elm = cp.d.createElement("p");
-                                text_data_elm = cp.d.createElement("span");
-                                text_info_elm = cp.d.createElement("span");
-                                text_tips_elm = cp.d.createElement("div");
+                                text_block_elm = cp.D.createElement("div");
+                                text_data_info_elm = cp.D.createElement("p");
+                                text_data_elm = cp.D.createElement("span");
+                                text_info_elm = cp.D.createElement("span");
+                                text_tips_elm = cp.D.createElement("div");
                                 // jsonからテキストを設定
                                 text_data_elm.innerHTML = args[j][k]["data"];
                                 text_info_elm.innerHTML = args[j][k]["info"];
@@ -105,37 +105,37 @@ function FunctionContainer() {
         // xhrでファイル取得
         } else if(args === "readFile") {
             return function(args) {
-                cp.f.get("xhr")({
+                cp.FC.get("xhr")({
                     "method":"GET",
                     "url":args,
                     "async":true,
                     "type":"",
                     "collback":function(args) {
-                        cp.f.get("readText")(JSON.parse(args));
+                        cp.FC.get("readText")(JSON.parse(args));
                     }
                 });
             }
         } else if(args === "deCodeInit") {
             return function(args) {
                 // グラフ生成
-                var deCode_chart_elm = cp.d.querySelector(".deCode-chart");
-                var table_chart_elm = cp.d.createElement("table");
+                var deCode_chart_elm = cp.D.querySelector(".deCode-chart");
+                var table_chart_elm = cp.D.createElement("table");
                 for(var i = 0, len_i = 8;i < len_i;i++) {
-                    var tr_chart_elm = cp.d.createElement("tr");
+                    var tr_chart_elm = cp.D.createElement("tr");
                     for(var j = 0, len_j = 8;j < len_j;j++) {
-                        var td_chart_elm = cp.d.createElement("td");
+                        var td_chart_elm = cp.D.createElement("td");
                         tr_chart_elm.appendChild(td_chart_elm);
                     }
                     table_chart_elm.appendChild(tr_chart_elm);
                 }
                 deCode_chart_elm.appendChild(table_chart_elm);
                 // パネル生成
-                var deCode_panel_elm = cp.d.querySelector(".deCode-panel");
-                var image_panel_elm = cp.d.createElement("img");
+                var deCode_panel_elm = cp.D.querySelector(".deCode-panel");
+                var image_panel_elm = cp.D.createElement("img");
                 deCode_panel_elm.appendChild(image_panel_elm);
                 // コンテキスト生成
-                var deCode_context_elm = cp.d.querySelector(".deCode-context");
-                var input_context_elm = cp.d.createElement("input");
+                var deCode_context_elm = cp.D.querySelector(".deCode-context");
+                var input_context_elm = cp.D.createElement("input");
                 input_context_elm.setAttribute("type", "text");
                 deCode_context_elm.appendChild(input_context_elm);
             }
