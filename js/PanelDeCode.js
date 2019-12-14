@@ -1,8 +1,8 @@
 function PanelDeCode() {
     this.CONSTANT = {
-        "chart":null,
-        "panel":null,
-        "context":null,
+        "chart":"",
+        "panel":"",
+        "context":"",
         "chart_width":8,
         "chart_height":8,
         "panel_names":[
