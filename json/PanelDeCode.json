@@ -3,7 +3,7 @@
         {
             "data":"0.0.1:",
             "info":"パネルDe:コード",
-            "tips":"<div class=\"deCode\" onload=\"cp.PDC.get('init')()\"></div>"
+            "tips":"<div class=\"deCode\"><input id=\"createNewPDC\" type=\"button\" value=\"新規作成\" onclick=\"cp.PDC.get('init')()\"></div>"
         },
         {
             "data":"1.",

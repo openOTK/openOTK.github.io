@@ -56,6 +56,7 @@ function PanelDeCode() {
         // 初期化
         if(args === "init") {
             return function() {
+                cp.D.querySelector("#createNewPDC").disabled = true;
                 cp.PDC.set("chart", cp.D.querySelector(".deCode-chart"));
                 cp.PDC.set("panel", cp.D.querySelector(".deCode-panel"));
                 cp.PDC.set("context", cp.D.querySelector(".deCode-context"));
