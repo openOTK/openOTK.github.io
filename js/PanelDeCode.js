@@ -99,8 +99,8 @@ function PanelDeCode() {
                         var context_input_elm = cp.D.createElement("textarea");
                     } else {
                         var context_input_elm = cp.D.createElement("input");
-                        context_input_elm.setAttribute("type", context_setting.type);
-                        context_input_elm.setAttribute("value", context_setting.value);
+                        context_input_elm.setAttribute("type", context_setting[i].type);
+                        context_input_elm.setAttribute("value", context_setting[i].value);
                     }
                     context_p_elm.appendChild(context_input_elm);
                     deCodeContext.appendChild(context_p_elm);
