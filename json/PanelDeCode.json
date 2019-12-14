@@ -6,18 +6,18 @@
             "tips":"<div class=\"deCode\"><input id=\"createNewPDC\" type=\"button\" value=\"新規作成\" onclick=\"cp.PDC.get('init')()\"></div>"
         },
         {
-            "data":"1.",
+            "data":"",
             "info":"グラフ",
             "tips":"<div class=\"deCode-chart\"></div>"
         },
         {
-            "data":"2.",
-            "info":"パネル",
-            "tips":"<div class=\"deCode-panel disp-close\"></div>"
+            "data":"",
+            "info":"<span class=\"disp-close\">パネル</span>",
+            "tips":"<div class=\"deCode-panel disp-close\"><p>パネル</p></div>"
         },
         {
-            "data":"3.",
-            "info":"コンテキスト",
+            "data":"",
+            "info":"<span class=\"disp-close\">コンテキスト</span>",
             "tips":"<div class=\"deCode-context disp-close\"></div>"
         }
     ]
