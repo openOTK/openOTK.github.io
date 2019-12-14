@@ -81,7 +81,7 @@ function PanelDeCode() {
                     var panel_image_elm = cp.D.createElement("input");
                     panel_image_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
                     panel_image_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
-                    panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].clickEvent + ")");
+                    panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')('" + cp.PDC.is("panel_names")[i].clickEvent + "')");
                     deCodePanel.appendChild(panel_image_elm);
                 }
                 deCodePanel.appendChild(cp.PDC.get("createCloseButton")("panel"));
@@ -132,9 +132,10 @@ function PanelDeCode() {
                 var close_input_elm = cp.D.createElement("input");
                 close_input_elm.setAttribute("type", "button");
                 close_input_elm.setAttribute("value", "閉じる");
-                close_input_elm.setAttribute("onclock", "cp.PDC.get('close')(" + args + ")");
-                return close_p_elm.appendChild(close_input_elm);
+                close_input_elm.setAttribute("onclock", "cp.PDC.get('close')('" + args + "')");
+                close_p_elm.appendChild(close_input_elm);
+                return close_p_elm;
             }
         }
-    }
+    };
 }
