@@ -112,15 +112,17 @@ function PanelDeCode() {
         // 小窓開くイベント
         } else if(args === "open") {
             return function(args) {
-                if(cp.PDC.is(args).classList.contains("disp-close")) {
-                    cp.PDC.is(args).classList.remove("disp-close");
+                var open_elm = cp.D.querySelector(".deCode-" + args);
+                if(open_elm.classList.contains("disp-close")) {
+                    open_elm.classList.remove("disp-close");
                 }
             }
         // 小窓閉じるイベント
         } else if(args === "close") {
             return function(args) {
-                if(!cp.PDC.is(args).classList.contains("disp-close")) {
-                    cp.PDC.is(args).classList.add("disp-close");
+                var close_elm = cp.D.querySelector(".deCode-" + args);
+                if(!close_elm.classList.contains("disp-close")) {
+                    close_elm.classList.add("disp-close");
                 }
             }
         // 閉じるボタン生成
