@@ -55,7 +55,7 @@ function PanelDeCode() {
                 cp.PDC.get("panel")();
             }
         // グラフ生成
-        } else if("chart") {
+        } else if(args === "chart") {
             return function() {
                 var deCodeChart = cp.D.querySelector(".deCode-chart");
                 var chart_table_elm = cp.D.createElement("table");
@@ -74,7 +74,7 @@ function PanelDeCode() {
                 deCodeChart.appendChild(chart_table_elm);
             }
         // パネル生成
-        } else if("panel") {
+        } else if(args === "panel") {
             return function() {
                 var deCodePanel = cp.D.querySelector(".deCode-panel");
                 for(var i = 0, len_i = cp.PDC.is("panel_names").length;i < len_i;i++) {
@@ -87,7 +87,7 @@ function PanelDeCode() {
                 deCodePanel.appendChild(cp.PDC.get("createCloseButton")("panel"));
             }
         // コンテキスト生成
-        } else if("context") {
+        } else if(args === "context") {
             return function(args) {
                 var deCodeContext = cp.D.querySelector(".deCode-context");
                 deCodeContext.innerHTML = "";
@@ -110,21 +110,21 @@ function PanelDeCode() {
                 cp.PDC.get("open")("context");
             }
         // 小窓開くイベント
-        } else if("open") {
+        } else if(args === "open") {
             return function(args) {
                 if(cp.PDC.is(args).classList.contains("disp-close")) {
                     cp.PDC.is(args).classList.remove("disp-close");
                 }
             }
         // 小窓閉じるイベント
-        } else if("close") {
+        } else if(args === "close") {
             return function(args) {
                 if(!cp.PDC.is(args).classList.contains("disp-close")) {
                     cp.PDC.is(args).classList.add("disp-close");
                 }
             }
         // 閉じるボタン生成
-        } else if("createCloseButton") {
+        } else if(args === "createCloseButton") {
             return function(args) {
                 var close_p_elm = cp.D.createElement("p");
                 var close_input_elm = cp.D.createElement("input");
