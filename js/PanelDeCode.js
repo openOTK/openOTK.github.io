@@ -3,12 +3,12 @@ function PanelDeCode() {
         "chart_width":8,
         "chart_height":8,
         "panel_names":[
-            {"type":"button", "value":"スタート" ,"onclick":"context_function"},
-            {"type":"button", "value":"条件分岐(if)" ,"onclick":"context_if"},
-            {"type":"button", "value":"条件分岐(else if)" ,"onclick":"context_else_if"},
-            {"type":"button", "value":"ループ(for)" ,"onclick":"context_for"},
-            {"type":"button", "value":"フリー" ,"onclick":"context_free"},
-            {"type":"button", "value":"次へ" ,"onclick":"context_next"}
+            {"type":"button", "value":"スタート" ,"clickEvent":"context_function"},
+            {"type":"button", "value":"条件分岐(if)" ,"clickEvent":"context_if"},
+            {"type":"button", "value":"条件分岐(else if)" ,"clickEvent":"context_else_if"},
+            {"type":"button", "value":"ループ(for)" ,"clickEvent":"context_for"},
+            {"type":"button", "value":"フリー" ,"clickEvent":"context_free"},
+            {"type":"button", "value":"次へ" ,"clickEvent":"context_next"}
         ],
         "context_function":[
             {"node":"DOC", "type":"text", "value":""},
@@ -81,7 +81,7 @@ function PanelDeCode() {
                     var panel_image_elm = cp.D.createElement("input");
                     panel_image_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
                     panel_image_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
-                    panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].onclock + ")");
+                    panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].clickEvent + ")");
                     deCodePanel.appendChild(panel_image_elm);
                 }
                 deCodePanel.appendChild(cp.PDC.get("createCloseButton")("panel"));
