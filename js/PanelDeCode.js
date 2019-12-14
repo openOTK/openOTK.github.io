@@ -1,8 +1,5 @@
 function PanelDeCode() {
     this.CONSTANT = {
-        "chart":"",
-        "panel":"",
-        "context":"",
         "chart_width":8,
         "chart_height":8,
         "panel_names":[
@@ -49,23 +46,18 @@ function PanelDeCode() {
     this.is = function(args){
         return cp.PDC.CONSTANT[args];
     };
-    this.set = function(args){
-        cp.PDC.CONSTANT[args.key] = args.value;
-    };
     this.get = function(args) {
         // 初期化
         if(args === "init") {
             return function() {
                 cp.D.querySelector("#createNewPDC").disabled = true;
-                cp.PDC.set("chart", cp.D.querySelector(".deCode-chart"));
-                cp.PDC.set("panel", cp.D.querySelector(".deCode-panel"));
-                cp.PDC.set("context", cp.D.querySelector(".deCode-context"));
                 cp.PDC.get("chart")();
                 cp.PDC.get("panel")();
             }
         // グラフ生成
         } else if("chart") {
             return function() {
+                var deCodeChart = cp.D.querySelector(".deCode-chart");
                 var chart_table_elm = cp.D.createElement("table");
                 for(var i = 0, len_i = cp.PDC.is("chart_height");i < len_i;i++) {
                     var chart_tr_elm = cp.D.createElement("tr");
@@ -79,23 +71,26 @@ function PanelDeCode() {
                     }
                     chart_table_elm.appendChild(chart_tr_elm);
                 }
-                cp.PDC.is("chart").appendChild(chart_table_elm);
+                deCodeChart.appendChild(chart_table_elm);
             }
         // パネル生成
         } else if("panel") {
             return function() {
+                var deCodePanel = cp.D.querySelector(".deCode-panel");
                 for(var i = 0, len_i = cp.PDC.is("panel_names").length;i < len_i;i++) {
                     var panel_image_elm = cp.D.createElement("input");
                     panel_image_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
                     panel_image_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
                     panel_image_elm.setAttribute("onclock", "cp.PDC.get('context')(" + cp.PDC.is("panel_names")[i].onclock + ")");
-                    cp.PDC.is("panel").appendChild(panel_image_elm);
+                    deCodePanel.appendChild(panel_image_elm);
                 }
-                cp.PDC.is("panel").appendChild(cp.PDC.get("createCloseButton")("panel"));
+                deCodePanel.appendChild(cp.PDC.get("createCloseButton")("panel"));
             }
         // コンテキスト生成
         } else if("context") {
             return function(args) {
+                var deCodeContext = cp.D.querySelector(".deCode-context");
+                deCodeContext.innerHTML = "";
                 var context_setting = cp.PDC.is(args);
                 for(var i = 0, len_i = context_setting.length;i < len_i;i++) {
                     var context_p_elm = cp.D.createElement("p");
@@ -108,9 +103,9 @@ function PanelDeCode() {
                         context_input_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
                     }
                     context_p_elm.appendChild(context_input_elm);
-                    cp.PDC.is("context").appendChild(context_p_elm);
+                    deCodeContext.appendChild(context_p_elm);
                 }
-                cp.PDC.is("context").appendChild(cp.PDC.get("createCloseButton")("context"));
+                deCodeContext.appendChild(cp.PDC.get("createCloseButton")("context"));
                 cp.PDC.get("close")("panel");
                 cp.PDC.get("open")("context");
             }
