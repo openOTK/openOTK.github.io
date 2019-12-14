@@ -94,13 +94,13 @@ function PanelDeCode() {
                 var context_setting = cp.PDC.is(args);
                 for(var i = 0, len_i = context_setting.length;i < len_i;i++) {
                     var context_p_elm = cp.D.createElement("p");
-                    context_p_elm.appendChild(cp.D.createTextNode(cp.PDC.is("panel_names")[i].node));
-                    if(cp.PDC.is("panel_names")[i].type === "textarea") {
+                    context_p_elm.appendChild(cp.D.createTextNode(context_setting[i].node));
+                    if(context_setting.type === "textarea") {
                         var context_input_elm = cp.D.createElement("textarea");
                     } else {
                         var context_input_elm = cp.D.createElement("input");
-                        context_input_elm.setAttribute("type", cp.PDC.is("panel_names")[i].type);
-                        context_input_elm.setAttribute("value", cp.PDC.is("panel_names")[i].value);
+                        context_input_elm.setAttribute("type", context_setting.type);
+                        context_input_elm.setAttribute("value", context_setting.value);
                     }
                     context_p_elm.appendChild(context_input_elm);
                     deCodeContext.appendChild(context_p_elm);
