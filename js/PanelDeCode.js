@@ -12,34 +12,34 @@ function PanelDeCode() {
         ],
         "context_function":[
             {"node":"DOC", "type":"text", "value":""},
-            {"node":"名前", "type":"text", "valaue":"newFunction"},
+            {"node":"名前", "type":"text", "value":"newFunction"},
             {"node":"引数", "type":"text", "value":"args"},
             {"node":"コメント", "type":"text", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ],
         "context_if":[
             {"node":"コメント", "type":"text", "value":""},
-            {"node":"条件", "type":"text", "valaue":""},
+            {"node":"条件", "type":"text", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ],
         "context_else_if":[
             {"node":"コメント", "type":"text", "value":""},
-            {"node":"条件", "type":"text", "valaue":""},
+            {"node":"条件", "type":"text", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ],
         "context_for":[
             {"node":"コメント", "type":"text", "value":""},
-            {"node":"終了条件", "type":"text", "valaue":""},
+            {"node":"終了条件", "type":"text", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ],
         "context_free":[
             {"node":"コメント", "type":"text", "value":""},
-            {"node":"フリー入力<br>", "type":"textarea", "valaue":""},
+            {"node":"フリー入力<br>", "type":"textarea", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ],
         "context_next":[
             {"node":"コメント", "type":"text", "value":""},
-            {"node":"戻り値", "type":"text", "valaue":""},
+            {"node":"戻り値", "type":"text", "value":""},
             {"node":"", "type":"button", "value":"設定"}
         ]
     };
@@ -64,9 +64,10 @@ function PanelDeCode() {
                     for(var j = 0, len_j = cp.PDC.is("chart_width");j < len_j;j++) {
                         var chart_td_elm = cp.D.createElement("td");
                         chart_td_elm.setAttribute("class", "chart-one");
-                        chart_td_elm.setAttribute("onclick", "cp.PDC.get('open')('panel')");
+                        chart_td_elm.setAttribute("onclick", "cp.PDC.get('chartTarget')(this)");
                         chart_td_elm.dataset.posy = i;
                         chart_td_elm.dataset.posx = j;
+                        chart_td_elm.dataset.active = false;
                         chart_tr_elm.appendChild(chart_td_elm);
                     }
                     chart_table_elm.appendChild(chart_tr_elm);
@@ -84,7 +85,6 @@ function PanelDeCode() {
                     panel_image_elm.setAttribute("onclick", "cp.PDC.get('context')('" + cp.PDC.is("panel_names")[i].clickEvent + "')");
                     deCodePanel.appendChild(panel_image_elm);
                 }
-                deCodePanel.appendChild(cp.PDC.get("createCloseButton")("panel"));
             }
         // コンテキスト生成
         } else if(args === "context") {
@@ -95,18 +95,20 @@ function PanelDeCode() {
                 for(var i = 0, len_i = context_setting.length;i < len_i;i++) {
                     var context_p_elm = cp.D.createElement("p");
                     context_p_elm.appendChild(cp.D.createTextNode(context_setting[i].node));
-                    if(context_setting.type === "textarea") {
+                    if(context_setting[i].type === "textarea") {
                         var context_input_elm = cp.D.createElement("textarea");
                     } else {
                         var context_input_elm = cp.D.createElement("input");
                         context_input_elm.setAttribute("type", context_setting[i].type);
                         context_input_elm.setAttribute("value", context_setting[i].value);
                     }
+                    if(context_setting[i].clickEvent) {
+                        context_input_elm.setAttribute("onclick", "cp.PDC.get('" + context_setting[i].clickEvent + "')");
+                    }
                     context_p_elm.appendChild(context_input_elm);
                     deCodeContext.appendChild(context_p_elm);
                 }
                 deCodeContext.appendChild(cp.PDC.get("createCloseButton")("context"));
-                cp.PDC.get("close")("panel");
                 cp.PDC.get("open")("context");
             }
         // 小窓開くイベント
@@ -135,6 +137,24 @@ function PanelDeCode() {
                 close_input_elm.setAttribute("onclick", "cp.PDC.get('close')('" + args + "')");
                 close_p_elm.appendChild(close_input_elm);
                 return close_p_elm;
+            }
+        // ターゲット設定
+        } else if(args === "chartTarget") {
+            return function(args) {
+                var chartAll = cp.D.querySelectorAll("chart-one");
+                for(var i = 0, len_i = chartAll.length;i < len_i;i++) {
+                    if(args.dataset.posy === chartAll[i].dataset.posy
+                        && args.dataset.posx === chartAll[i].dataset.posx) {
+                            args.dataset.active = true;
+                    } else {
+                        args.dataset.active = false;
+                    }
+                }
+            }
+        // pdcコード出力
+        } else if(args === "pdcOutput") {
+            return function(args) {
+                
             }
         }
     };
